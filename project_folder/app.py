@@ -4,6 +4,10 @@ import io
 import openai
 import os
 
+from flask import Flask
+app = Flask(__name__)
+
+
 openai.api_key = os.getenv("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")
 
 def get_chatgpt_hint(code_text, error_text):
