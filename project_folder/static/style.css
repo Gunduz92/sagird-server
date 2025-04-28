@@ -1,0 +1,103 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.title {
+    text-align: center;
+    color: #333;
+}
+
+.task-select {
+    margin-bottom: 20px;
+}
+
+.task-card {
+    background-color: #fafafa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: monospace;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.result-list {
+    list-style: none;
+    padding: 0;
+}
+
+.result-list li {
+    font-size: 18px;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.fail {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #ddd;
+    height: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 20px;
+    display: none;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background-color: green;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    font-weight: bold;
+    transition: width 0.5s ease;
+}
