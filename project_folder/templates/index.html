@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>Tapşırıq Yoxlama Sistemi</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1 class="title">🚀 Tapşırıq Yoxlama Sistemi</h1>
+
+    <div class="task-select">
+        <label for="taskSelect">Tapşırıq seçin:</label>
+        <select id="taskSelect" onchange="loadTask()">
+            {% for task in tasks %}
+                <option value="{{ loop.index0 }}">{{ task.description[:50] }}...</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="task-card">
+        <h2>Tapşırıq mətni:</h2>
+        <div id="taskText">{{ tasks[0].description }}</div>
+    </div>
+
+    <h2>Kod sahəsi:</h2>
+    <textarea id="code" placeholder="# Buraya kod yaz..." rows="20" cols="100"></textarea>
+
+    <button onclick="submitCode()" class="btn">🚀 Yoxla</button>
+
+    <h2>Test nəticələri:</h2>
+    <ul id="result" class="result-list"></ul>
+
+    <div id="progressContainer" class="progress-container">
+        <div id="progressBar" class="progress-bar">0%</div>
+    </div>
+</div>
+
+<script>
+    let taskTexts = {{ tasks|tojson }};
+
+    function loadTask() {
+        const select = document.getElementById('taskSelect');
+        const taskId = select.value;
+        document.getElementById('taskText').innerText = taskTexts[taskId].description;
+    }
+
+    function submitCode() {
+        const code = document.getElementById('code').value;
+        const task_id = document.getElementById('taskSelect').value;
+
+        fetch('/check', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({code: code, task_id: task_id})
+        })
+        .then(response => response.json())
+        .then(data => {
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = '';
+
+            let dogru = 0;
+            let cem = data.results.length;
+
+            data.results.forEach((r, idx) => {
+                const li = document.createElement('li');
+                li.className = r ? 'success' : 'fail';
+                li.innerText = `Test ${idx+1}: ${r ? '✅ Doğru' : '❌ Yanlış'}`;
+                if (r) dogru++;
+                resultElement.appendChild(li);
+            });
+
+            const faiz = Math.round((dogru / cem) * 100);
+            const progressBar = document.getElementById('progressBar');
+            const progressContainer = document.getElementById('progressContainer');
+
+            progressContainer.style.display = 'block';
+            progressBar.style.width = faiz + '%';
+            progressBar.innerText = faiz + '%';
+            progressBar.style.backgroundColor = faiz === 100 ? 'green' : (faiz >= 50 ? 'orange' : 'red');
+        })
+        .catch(error => {
+            alert("Xəta baş verdi: " + error);
+        });
+    }
+</script>
+
+</body>
+</html>
