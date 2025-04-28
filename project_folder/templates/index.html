@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <title>Tapşırıq Yoxlama Sistemi</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>🚀 Tapşırıq Yoxlama Sistemi</h1>
+
+    <!-- Kateqoriya seçimi -->
+    <div class="task-select">
+        <label for="categorySelect">Kateqoriya seçin:</label><br>
+        <select id="categorySelect" onchange="filterTasks()">
+            <option value="">-- Seçin --</option>
+            {% for category in categories %}
+                <option value="{{ category }}">{{ category.capitalize() }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <!-- Tapşırıq seçimi -->
+    <div class="task-select">
+        <label for="taskSelect">Tapşırıq seçin:</label><br>
+        <select id="taskSelect" onchange="loadTask()">
+            <!-- Tapşırıqlar buraya avtomatik gələcək -->
+        </select>
+    </div>
+
+    <!-- Tapşırıq mətnini göstər -->
+    <div class="task-card">
+        <h2>Tapşırıq:</h2>
+        <div id="taskText">Tapşırıq seçin...</div>
+    </div>
+
+    <!-- Kod yazmaq üçün sahə -->
+    <h2>Kodunuzu yazın:</h2>
+    <textarea id="code" placeholder="# Buraya kodunuzu yazın..." rows="20"></textarea>
+
+    <br><br>
+    <button onclick="submitCode()" class="btn">✅ Yoxla</button>
+
+    <h2>Test Nəticələri:</h2>
+    <ul id="result" class="result-list"></ul>
+
+    <!-- Progress bar -->
+    <div id="progressContainer" class="progress-container" style="display:none;">
+        <div id="progressBar" class="progress-bar">0%</div>
+    </div>
+</div>
+
+<script>
+let allTasks = {{ tasks|tojson }};
+let filteredTasks = [];
+
+function filterTasks() {
+    const selectedCategory = document.getElementById('categorySelect').value;
+    const taskSelect = document.getElementById('taskSelect');
+    taskSelect.innerHTML = '';
+
+    filteredTasks = allTasks.filter(task => task.category === selectedCategory);
+
+    filteredTasks.forEach((task, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = task.description.slice(0, 50) + '...';
+        taskSelect.appendChild(option);
+    });
+
+    // Task seçiləndə dərhal ilk tapşırığı göstər
+    loadTask();
+}
+
+function loadTask() {
+    const taskId = document.getElementById('taskSelect').value;
+    if (taskId !== '') {
+        document.getElementById('taskText').innerText = filteredTasks[taskId].description;
+    }
+}
+
+function submitCode() {
+    const code = document.getElementById('code').value;
+    const taskId = document.getElementById('taskSelect').value;
+
+    if (taskId === '') {
+        alert("Zəhmət olmasa bir tapşırıq seçin!");
+        return;
+    }
+
+    fetch('/check', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({code: code, task_id: taskId})
+    })
+    .then(response => response.json())
+    .then(data => {
+        const resultElement = document.getElementById('result');
+        resultElement.innerHTML = '';
+
+        let dogru = 0;
+        let cem = data.results.length;
+
+        data.results.forEach((res, idx) => {
+            const li = document.createElement('li');
+            li.className = res.correct ? 'success' : 'fail';
+            li.innerHTML = `Test ${idx+1}: ${res.correct ? '✅ Doğru' : '❌ Yanlış'}`;
+
+            if (!res.correct) {
+                const hintButton = document.createElement('button');
+                hintButton.innerText = '💡 İpucu istəyirəm';
+                hintButton.style.marginLeft = "10px";
+                hintButton.onclick = function() {
+                    fetch('/hint', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            expected_output: res.expected_output,
+                            user_output: res.user_output,
+                            error_message: res.error_message || '',
+                            code: res.code
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(hintData => {
+                        alert(`💡 İpucu: ${hintData.hint}`);
+                    });
+                };
+                li.appendChild(hintButton);
+            }
+
+            if (res.correct) dogru++;
+            resultElement.appendChild(li);
+        });
+
+        // Proqres barı güncəllə
+        const faiz = Math.round((dogru / cem) * 100);
+        const progressBar = document.getElementById('progressBar');
+        const progressContainer = document.getElementById('progressContainer');
+
+        progressContainer.style.display = 'block';
+        progressBar.style.width = faiz + '%';
+        progressBar.innerText = faiz + '%';
+        progressBar.style.backgroundColor = faiz === 100 ? 'green' : (faiz >= 50 ? 'orange' : 'red');
+    })
+    .catch(error => {
+        alert("Xəta baş verdi: " + error);
+    });
+}
+</script>
+
+</body>
+</html>

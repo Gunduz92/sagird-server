@@ -1,0 +1,35 @@
+#TASK
+İki ədəd oxuyun və cəmini çap edin.
+#TESTS
+2
+3
+#OUTPUT
+5
+#NEWTEST
+10
+15
+#OUTPUT
+25
+#NEWTEST
+7
+8
+#OUTPUT
+15
+
+#TASK
+İki ədədin hasili
+#TESTS
+2
+3
+#OUTPUT
+6
+#NEWTEST
+10
+15
+#OUTPUT
+150
+#NEWTEST
+7
+8
+#OUTPUT
+56
