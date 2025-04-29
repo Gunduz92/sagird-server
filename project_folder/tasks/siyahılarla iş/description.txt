@@ -1,0 +1,99 @@
+ #TASK
+Daxil edilmiş sətirdə rəqəm simvollarının nömrəsini alt-alta şəkildə çap edən proqram yazın.
+#TESTS
+sf5df7hg2r
+#OUTPUT
+2 5 8 
+#NEWTEST
+ytg6jk90ut5
+#OUTPUT
+3 6 7 10 
+#NEWTEST
+hyi890uer43r
+#OUTPUT
+3 4 5 9 10 
+
+#TASK
+alt-alta şəkildə iki eyni sayda rəqəmdən ibarət ədədlər daxil edilir. Bu ədədlərin uyğun mövqedəki rəqəmlərinin cəmi 10-a bölünməklə qalığı alınır və həmən qalıqlardan yeni ədəd düzəlir.
+Bu ədədi çap edən proqram yazın.
+Məsələn:
+Giriş
+67890
+65678
+Çıxış
+22468
+#TESTS
+65432
+87653
+#OUTPUT
+42085
+#NEWTEST
+768
+564
+#OUTPUT
+222
+#NEWTEST
+6532
+7521
+#OUTPUT
+3053
+
+#TASK
+Daxil edilmiş ədədi öz tərsi ilə cəmləyən proqram yazın.
+#TESTS
+125
+#OUTPUT
+646
+#NEWTEST
+13
+#OUTPUT
+44
+#NEWTEST
+76
+#OUTPUT
+143
+
+#TASK
+Daxil edilmiş sətirdə bütün böyük hərfləri öz indeksi ilə əvəzləyən proqram yazın.
+#TESTS
+bhFrtEs
+#OUTPUT
+bh2rt5s
+#NEWTEST
+yuTukpYf
+#OUTPUT
+yu2ukp6f
+#NEWTEST
+opyGhrEW
+#OUTPUT
+opy3hr67
+
+#TASK
+n sayda tam ədədlərdən ibarət siyahının elementlərini daxil edin(n cüt ədəddir). Əvvəlcə n sonra isə siyahı elementlıri alt-alta şəkildə daxil edilir.
+Bu siyahıdaolan elementləri cüt-cüt cəmləyərək yeni siyahı əldə edib onu çap edən proqram yazın. 
+#TESTS
+6
+2
+4
+5
+6
+7
+5
+#OUTPUT
+[6, 11, 12]
+#NEWTEST
+4
+12
+16
+8
+11
+#OUTPUT
+[28, 19]
+#NEWTEST
+4
+10
+13
+19
+17
+#OUTPUT
+[23, 36]
