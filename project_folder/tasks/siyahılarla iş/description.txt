@@ -1,17 +1,17 @@
-#TASK
+ #TASK
 Daxil edilmiş sətirdə rəqəm simvollarının nömrəsini alt-alta şəkildə çap edən proqram yazın.
 #TESTS
 sf5df7hg2r
 #OUTPUT
-2 5 8
+2 5 8 
 #NEWTEST
 ytg6jk90ut5
 #OUTPUT
-3 6 7 10
+3 6 7 10 
 #NEWTEST
 hyi890uer43r
 #OUTPUT
-3 4 5 9 10
+3 4 5 9 10 
 
 #TASK
 alt-alta şəkildə iki eyni sayda rəqəmdən ibarət ədədlər daxil edilir. Bu ədədlərin uyğun mövqedəki rəqəmlərinin cəmi 10-a bölünməklə qalığı alınır və həmən qalıqlardan yeni ədəd düzəlir.
