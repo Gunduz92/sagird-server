@@ -1,0 +1,152 @@
+#TASK
+Verilmiş sətirdə "a" hərflərinin sayını tapın.
+#TESTS
+salam
+#OUTPUT
+2
+#NEWTEST
+hello
+#OUTPUT
+0
+#NEWTEST
+aaba
+#OUTPUT
+3
+
+#TASK
+Daxil edilmiş sətirdə "a" simvollarını "b" ilə dəyişən kod yazın.
+#TESTS
+aabaa
+#OUTPUT
+bbbbb
+#NEWTEST
+salam
+#OUTPUT
+sblbm
+#NEWTEST
+hello
+#OUTPUT
+hello
+
+#TASK
+Verilmiş sətirdə sözlər arasında - işarəsi qoyan proqram yazın.
+#TESTS
+Salam necesen
+#OUTPUT
+Salam-necesen
+#NEWTEST
+Codera Academy
+#OUTPUT
+Codera-Academy
+#NEWTEST
+Hello
+#OUTPUT
+Hello
+
+#TASK
+Daxil edilmiş sətirdə ilk sözün uzunluğunu çap edin.
+#TESTS
+Salam necesen
+#OUTPUT
+5
+#NEWTEST
+HEllo
+#OUTPUT
+5
+#NEWTEST
+Codera Academy Abituriyentleri
+#OUTPUT
+6
+
+#TASK
+Verilmiş sətirdə ilk və son sözün yerini dəyişdirib sətri çıxışa verin.(sətrdə ən azı 2 söz var)
+#TESTS
+Codera Academy
+#OUTPUT
+Academy Codera
+#NEWTEST
+A big car
+#OUTPUT
+car big A
+#NEWTEST
+Hello World
+#OUTPUT
+World Hello
+
+#TASK
+Verilmiş sətirdə rəqəmləri çıxışa verin.(məsələn "s1l2m3" -> "123")
+#TESTS
+123
+#OUTPUT
+6
+#NEWTEST
+107
+#OUTPUT
+8
+#NEWTEST
+852
+#OUTPUT
+15
+
+#TASK
+Verilmiş sətirdə yalnız böyük hərfləri çıxışa verin(məsələn,"AbcA D" ->"AAD").
+#TESTS
+Hello World
+#OUTPUT
+HW
+#NEWTEST
+Salam Dunya
+#OUTPUT
+SD
+#NEWTEST
+BaCDEd
+#OUTPUT
+BCDE
+
+#TASK
+Verilmiş sətirdə 2ci "a" simvolunun mövqeyini tapan proqram yazın.
+#TESTS
+abaa
+#OUTPUT
+2
+#NEWTEST
+bcdaf
+#OUTPUT
+-1
+#NEWTEST
+salam
+#OUTPUT
+3
+
+#TASK
+Daxil edilmiş sətirdə hər sözün uzunluğunu çap edin.(salam dünya -> 5 5)
+#TESTS
+Salam Dunya
+#OUTPUT
+5 5
+#NEWTEST
+NeW
+#OUTPUT
+3
+#NEWTEST
+Codera Academy
+#OUTPUT
+6 7
+
+#TASK
+Verilmiş sətirdə ilk hərf böyük hərfdirsə  "YES" əks halda ilk hərfi böyük edib sətri çap edən proqram yazın.
+#TESTS
+Salam
+#OUTPUT
+YES
+#NEWTEST
+salam
+#OUTPUT
+Salam
+#NEWTEST
+Hello Codera
+#OUTPUT
+YES
+
+
+
