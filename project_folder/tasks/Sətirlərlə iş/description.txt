@@ -1,15 +1,15 @@
 #TASK
 Verilmiş sətirdə "a" hərflərinin sayını tapın.
 #TESTS
-salam
+"salam"
 #OUTPUT
 2
 #NEWTEST
-hello
+"hello"
 #OUTPUT
 0
 #NEWTEST
-aaba
+"aaba"
 #OUTPUT
 3
 
