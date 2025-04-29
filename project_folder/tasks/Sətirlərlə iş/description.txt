@@ -197,65 +197,7 @@ Giriş
 #OUTPUT
 3053
 
-#TASK
-Daxil edilmiş ədədi öz tərsi ilə cəmləyən proqram yazın.
-#TESTS
-125
-#OUTPUT
-646
-#NEWTEST
-13
-#OUTPUT
-44
-#NEWTEST
-76
-#OUTPUT
-143
 
-#TASK
-Daxil edilmiş sətirdə bütün böyük hərfləri öz indeksi ilə əvəzləyən proqram yazın.
-#TESTS
-bhFrtEs
-#OUTPUT
-bh2rt5s
-#NEWTEST
-yuTukpYf
-#OUTPUT
-yu2ukp6f
-#NEWTEST
-opyGhrEW
-#OUTPUT
-opy3hr67
-
-#TASK
-n sayda tam ədədlərdən ibarət siyahının elementlərini daxil edin(n cüt ədəddir). Əvvəlcə n sonra isə siyahı elementlıri alt-alta şəkildə daxil edilir.
-Bu siyahıdaolan elementləri cüt-cüt cəmləyərək yeni siyahı əldə edib onu çap edən proqram yazın. 
-#TESTS
-6
-2
-4
-5
-6
-7
-5
-#OUTPUT
-[6, 11, 12]
-#NEWTEST
-4
-12
-16
-8
-11
-#OUTPUT
-[28, 19]
-#NEWTEST
-4
-10
-13
-19
-17
-#OUTPUT
-[23, 36]
 
 
 
